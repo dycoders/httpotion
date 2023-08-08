@@ -289,7 +289,7 @@ defmodule HTTPotion.Base do
       end
 
       defp error_to_string(error) do
-        if is_atom(error) or String.valid?(error), do: to_string(error), else: inspect(error)
+        if is_atom(error) or (is_binary(error) and String.valid?(error)), do: to_string(error), else: inspect(error)
       end
 
       def handle_response(response) do
